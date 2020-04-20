@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { SearchQueryContext } from "../contexts/SearchQueryContext";
+import { FavoritesContext } from "./contexts/FavoritesContext";
 
 const Favorites = (props) => {
+  // make request to API to fetch favs
+
+  const { selectedProperties, setSelectedProperties } = useContext(
+    SearchQueryContext
+  );
+  const { favorites, setFavorites, getFavoriteRecipes } = useContext(
+    FavoritesContext
+  );
+
+  useEffect(getFavoriteRecipes);
+
   return (
     <div className="flex flex-wrap justify-center">
       {props.favorites.map((favorite) => {
@@ -8,8 +21,8 @@ const Favorites = (props) => {
           <Recipe
             recipe={favorite}
             key={favorite.recipe.uri.split("_")[1]}
-            setFavorites={props.setFavorites}
-            favorites={props.favorites}
+            setFavorites={setFavorites}
+            favorites={favorites}
           />
         );
       })}

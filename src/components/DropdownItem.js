@@ -1,38 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
+import { SearchQueryContext } from "../contexts/SearchQueryContext";
 
 const DropdownItem = (props) => {
+  const { selectedProperties, setSelectedProperties } = useContext(
+    SearchQueryContext
+  );
   const updateSelected = () => {
-    props.selected.includes(props.parameter) ? deleteSelected() : addSelected();
-    props.dropdownLabel.includes(props.title)
+    selectedProperties.includes(props.option)
+      ? deleteSelected()
+      : addSelected();
+    props.dropdownLabel.includes(props.option.title)
       ? props.setDropdownLabel([
-          ...props.dropdownLabel.filter((item) => item !== props.title),
+          ...props.dropdownLabel.filter((item) => item !== props.option.title),
         ])
-      : props.setDropdownLabel([...props.dropdownLabel, props.title]);
+      : props.setDropdownLabel([...props.dropdownLabel, props.option.title]);
     // props.setDropdownLabel(`${props.dropdownLabel} ${props.title}`);
   };
 
   const addSelected = () => {
-    props.setSelected([...props.selected, props.parameter]);
+    setSelectedProperties([...selectedProperties, props.option]);
   };
 
   const deleteSelected = () => {
-    props.setSelected([
-      ...props.selected.filter((item) => item !== props.parameter),
+    setSelectedProperties([
+      ...selectedProperties.filter((item) => item !== props.option),
     ]);
   };
 
   return (
     <li
-      key={props.parameter}
       onClick={updateSelected}
-      parameter={props.parameter}
+      parameter={props.option.parameter}
       className="cursor-pointer hover:bg-gray-200 px-4 py-2"
     >
       <input
         type="checkbox"
-        checked={props.selected.includes(props.parameter) ? true : false}
+        onChange={updateSelected}
+        checked={selectedProperties.includes(props.option) ? true : false}
       />
-      <p className="inline ml-2">{props.title}</p>
+      <p className="inline ml-2">{props.option.title}</p>
     </li>
   );
 };

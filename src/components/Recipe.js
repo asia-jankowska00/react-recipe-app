@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { FavoritesContext } from "../contexts/FavoritesContext";
 
 const Recipe = (props) => {
   const recipe = props.recipe.recipe;
+  const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const [message, setMessage] = useState("");
   const [heart, setHeart] = useState();
@@ -14,19 +16,17 @@ const Recipe = (props) => {
   const parsedUri = recipe.uri.split("_")[1];
 
   const updateFavorites = () => {
-    props.favorites.includes(parsedUri) ? deleteFavorite() : addFavorite();
+    favorites.includes(parsedUri) ? deleteFavorite() : addFavorite();
   };
 
   const addFavorite = () => {
-    props.setFavorites([...props.favorites, parsedUri]);
+    setFavorites([...favorites, parsedUri]);
     setMessage("Remove favorite");
     setHeart(fasHeart);
   };
 
   const deleteFavorite = () => {
-    props.setFavorites([
-      ...props.favorites.filter((favorite) => favorite !== parsedUri),
-    ]);
+    setFavorites([...favorites.filter((favorite) => favorite !== parsedUri)]);
     setMessage("Add favorite");
     setHeart(farHeart);
   };
@@ -60,13 +60,11 @@ const Recipe = (props) => {
           className="flex w-1/3 justify-right text-orange-600"
         >
           <FontAwesomeIcon
-            icon={props.favorites.includes(parsedUri) ? fasHeart : farHeart}
+            icon={favorites.includes(parsedUri) ? fasHeart : farHeart}
             className="mt-1 mr-4 text-2xl inline-block self-center"
           />
           <p className="w-3/5 inline self-center">
-            {props.favorites.includes(parsedUri)
-              ? "Remove favorite"
-              : "Add favorite"}
+            {favorites.includes(parsedUri) ? "Remove favorite" : "Add favorite"}
           </p>
         </button>
       </div>

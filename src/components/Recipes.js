@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Recipe from "./Recipe";
+import { SearchQueryContext } from "../contexts/SearchQueryContext";
 
-const Recipes = (props) => {
+const Recipes = () => {
+  const { recipes } = useContext(SearchQueryContext);
+
   return (
     <div className="flex flex-wrap justify-center">
-      {props.recipes.map((recipe) => {
+      {recipes.map((recipe) => {
         return (
           <Recipe
             recipe={recipe}
             key={recipe.recipe.uri.split("_")[1]}
-            setFavorites={props.setFavorites}
-            favorites={props.favorites}
+            // setFavorites={props.setFavorites}
+            // favorites={props.favorites}
           />
         );
       })}
