@@ -6,12 +6,7 @@ import { SearchQueryContext } from "../contexts/SearchQueryContext";
 
 const Dropdown = () => {
   const [isOpen, setOpen] = useState(false);
-  const {
-    dietaryOptions,
-    setDietaryOptions,
-    selectedProperties,
-    setSelectedProperties,
-  } = useContext(SearchQueryContext);
+  const { dietaryOptions, selectedProperties } = useContext(SearchQueryContext);
 
   const [dropdownLabel, setDropdownLabel] = useState([]);
 

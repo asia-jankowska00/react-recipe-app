@@ -6,7 +6,7 @@ const Form = () => {
   const { getSearchQuery, doSearch } = useContext(SearchQueryContext);
 
   return (
-    <div className="flex justify-around mt-5">
+    <div className="flex justify-around py-8">
       <form className="flex w-3/4 justify-around items-start relative text-gray-700">
         <input
           type="text"
@@ -17,7 +17,7 @@ const Form = () => {
         <Dropdown />
         <button
           onClick={doSearch}
-          className="w-3/12 bg-blue-900 text-white Merriweather-400 shadow px-4 py-2"
+          className="w-3/12 bg-blue-900 text-white Merriweather-400 shadow px-4 py-2 transform hover:scale-110"
         >
           Search
         </button>

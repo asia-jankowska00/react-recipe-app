@@ -1,36 +1,46 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
+
 import Header from "./components/Header";
-import Form from "./components/Form";
-import Recipes from "./components/Recipes";
-import SearchQueryContextProvider from "./contexts/SearchQueryContext";
+import Search from "./components/Search";
+// import Form from "./components/Form";
+// import Recipes from "./components/Recipes";
+import OpenRecipe from "./components/OpenRecipe";
+import Favorites from "./components/Favorites";
+
+// import SearchQueryContextProvider from "./contexts/SearchQueryContext";
 // import { SearchQueryContext } from "./contexts/SearchQueryContext";
-import FavoritesContextProvider from "./contexts/FavoritesContext";
-// import { FavoritesContext } from "./contexts/FavoritesContext";
-import CredentialsContextProvider from "./contexts/CredentialsContext";
+// import FavoritesContextProvider from "./contexts/FavoritesContext";
+import { FavoritesContext } from "./contexts/FavoritesContext";
+// import CredentialsContextProvider from "./contexts/CredentialsContext";
 // import { CredentialsContext } from "./contexts/CredentialsContext";
 
 function App() {
+  const { setFavorites } = useContext(FavoritesContext);
+
+  useEffect(() => {
+    let favs = JSON.parse(localStorage.getItem("favorites"));
+    if (favs != null) {
+      setFavorites(favs);
+    }
+  }, []);
+
   return (
-    <CredentialsContextProvider>
-      <SearchQueryContextProvider>
-        <FavoritesContextProvider>
-          <div className="">
-            <Header
-            // doFavoriteSearch={doFavoriteSearch}
-            />
-
-            <Form />
-
-            <Recipes
-            // recipes={recipes}
-            // setFavorites={setFavorites}
-            // favorites={favorites}
-            />
-          </div>
-        </FavoritesContextProvider>
-      </SearchQueryContextProvider>
-    </CredentialsContextProvider>
+    // <CredentialsContextProvider>
+    // <SearchQueryContextProvider>
+    // {/* <FavoritesContextProvider> */}
+    <Router>
+      <div className="mb-8">
+        <Header />
+        <Route path="/recipe/:id" component={OpenRecipe} />
+        <Route path="/" exact component={Search} />
+        <Route path="/favorites" component={Favorites} />
+      </div>
+    </Router>
+    // {/* </FavoritesContextProvider> */}
+    // </SearchQueryContextProvider>
+    // </CredentialsContextProvider>
   );
 }
 

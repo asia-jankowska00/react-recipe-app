@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
@@ -7,33 +8,24 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FavoritesContext } from "../contexts/FavoritesContext";
 
 const Recipe = (props) => {
-  const recipe = props.recipe.recipe;
-  const { favorites, setFavorites } = useContext(FavoritesContext);
-
-  const [message, setMessage] = useState("");
-  const [heart, setHeart] = useState();
-
+  const recipe = props.recipe.recipe || props.recipe;
   const parsedUri = recipe.uri.split("_")[1];
 
-  const updateFavorites = () => {
-    favorites.includes(parsedUri) ? deleteFavorite() : addFavorite();
-  };
+  const {
+    favorites,
+    // setFavorites,
+    updateFavorites,
+    // addFavorite,
+    // deleteFavorite,
+  } = useContext(FavoritesContext);
 
-  const addFavorite = () => {
-    setFavorites([...favorites, parsedUri]);
-    setMessage("Remove favorite");
-    setHeart(fasHeart);
-  };
-
-  const deleteFavorite = () => {
-    setFavorites([...favorites.filter((favorite) => favorite !== parsedUri)]);
-    setMessage("Add favorite");
-    setHeart(farHeart);
-  };
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   return (
     <div className="flex flex-col bg-white shadow p-4 w-1/4 mx-6 mt-6">
-      <img src={recipe.image} alt="recipe" />
+      <img src={recipe.image} alt="recipe" className="object-contain w-full" />
       <h2 className="text-orange-600 text-2xl font-bold my-6">
         {recipe.label.length < 25
           ? recipe.label
@@ -46,17 +38,19 @@ const Recipe = (props) => {
         </a>
       </p>
       <div className="flex justify-between mt-8">
-        <button className="flex w-1/2 justify-left text-orange-600">
-          <a href="#" className="">
+        <Link to={`/recipe/${parsedUri}`}>
+          <button className="flex w-full justify-left p-4 bg-blue-900 text-white">
             <p className="inline self-center">View recipe info</p>
             <FontAwesomeIcon
               icon={faArrowRight}
-              className="ml-4 text-2xl self-center"
+              className="ml-4  self-center"
             />
-          </a>
-        </button>
+          </button>
+        </Link>
         <button
-          onClick={updateFavorites}
+          onClick={() => {
+            updateFavorites(parsedUri);
+          }}
           className="flex w-1/3 justify-right text-orange-600"
         >
           <FontAwesomeIcon
