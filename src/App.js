@@ -27,20 +27,12 @@ function App() {
   }, []);
 
   return (
-    // <CredentialsContextProvider>
-    // <SearchQueryContextProvider>
-    // {/* <FavoritesContextProvider> */}
-
     <div className="mb-8">
       <Header />
       <Route path="/recipe/:id" component={OpenRecipe} />
       <Route path="/" exact component={Search} />
       <Route path="/favorites" component={Favorites} />
     </div>
-
-    // {/* </FavoritesContextProvider> */}
-    // </SearchQueryContextProvider>
-    // </CredentialsContextProvider>
   );
 }
 

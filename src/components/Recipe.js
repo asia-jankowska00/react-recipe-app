@@ -24,12 +24,12 @@ const Recipe = (props) => {
   }, [favorites]);
 
   return (
-    <div className="flex flex-col bg-white shadow p-4 w-1/4 mx-6 mt-6">
+    <div className="flex flex-col bg-white shadow p-4 xl:w-3/12 lg:w-1/3 md:w-1/2 sm:w-3/4 w-full mx-6 mt-6">
       <img src={recipe.image} alt="recipe" className="object-contain w-full" />
       <h2 className="text-orange-600 text-2xl font-bold my-6">
-        {recipe.label.length < 25
+        {recipe.label.length < 20
           ? recipe.label
-          : recipe.label.substring(0, 25) + "..."}
+          : recipe.label.substring(0, 20) + "..."}
       </h2>
       <p className="text-gray-500">
         Source:{" "}

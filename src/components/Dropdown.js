@@ -35,7 +35,7 @@ const Dropdown = () => {
   };
 
   return (
-    <div ref={node} className="relative w-3/12">
+    <div ref={node} className="relative w-full md:w-3/12">
       <div
         onClick={handleDropdown}
         className="flex justify-between align-center bg-white border border-gray-400 shadow-inner px-4 py-2"
@@ -53,7 +53,7 @@ const Dropdown = () => {
       <ul
         className={
           isOpen === true
-            ? "block w-full absolute bg-white border border-gray-400 shadow-inner"
+            ? "block w-full absolute z-10 bg-white border border-gray-400 shadow-inner"
             : "hidden w-full bg-white border border-gray-400 shadow-inner"
         }
       >

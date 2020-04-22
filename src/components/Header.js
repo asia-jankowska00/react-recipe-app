@@ -5,18 +5,20 @@ import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
-    <header className="flex bg-blue-900 text-white p-4 px-16 justify-between">
+    <header className="flex bg-blue-900 text-white p-4 px-10 md:px-12 xl:px-20 justify-between">
       <div>
         <Link to="/" className="">
-          <h1 className="inline text-4xl font-semibold Merriweather-700 text-center">
+          <h1 className=" text-4xl font-semibold Merriweather-700r">
             <FontAwesomeIcon
               icon={faUtensils}
-              className="mx-4 transform hover:scale-110"
+              className="inline transform hover:scale-110"
             />
-            <p className="inline transform hover:scale-110">it just forks!</p>
+            <p className="hidden ml-8 sm:inline transform hover:scale-110">
+              it just forks!
+            </p>
           </h1>
         </Link>
-        <p className="inline ml-12 text-center">
+        <p className=" hidden md:inline text-center">
           Find culinary inspiration and enhance your diet
         </p>
       </div>
