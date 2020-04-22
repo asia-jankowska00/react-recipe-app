@@ -34,7 +34,7 @@ function App() {
     <div className="mb-8">
       <Header />
       <Route path="/recipe/:id" component={OpenRecipe} />
-      <Route path="/react-recipe-app/" exact component={Search} />
+      <Route path="/" exact component={Search} />
       <Route path="/favorites" component={Favorites} />
     </div>
 
