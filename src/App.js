@@ -4,17 +4,10 @@ import "./App.css";
 
 import Header from "./components/Header";
 import Search from "./components/Search";
-// import Form from "./components/Form";
-// import Recipes from "./components/Recipes";
 import OpenRecipe from "./components/OpenRecipe";
 import Favorites from "./components/Favorites";
 
-// import SearchQueryContextProvider from "./contexts/SearchQueryContext";
-// import { SearchQueryContext } from "./contexts/SearchQueryContext";
-// import FavoritesContextProvider from "./contexts/FavoritesContext";
 import { FavoritesContext } from "./contexts/FavoritesContext";
-// import CredentialsContextProvider from "./contexts/CredentialsContext";
-// import { CredentialsContext } from "./contexts/CredentialsContext";
 
 function App() {
   const { setFavorites } = useContext(FavoritesContext);

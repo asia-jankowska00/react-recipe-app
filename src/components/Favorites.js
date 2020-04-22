@@ -3,12 +3,9 @@ import { FavoritesContext } from "../contexts/FavoritesContext";
 import Recipe from "./Recipe";
 
 const Favorites = () => {
-  const {
-    favorites,
-    setFavorites,
-    getFavoriteRecipes,
-    favoriteRecipes,
-  } = useContext(FavoritesContext);
+  const { favorites, getFavoriteRecipes, favoriteRecipes } = useContext(
+    FavoritesContext
+  );
 
   useEffect(() => {
     getFavoriteRecipes();
