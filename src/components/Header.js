@@ -11,9 +11,9 @@ const Header = () => {
           <h1 className=" text-4xl font-semibold Merriweather-700r">
             <FontAwesomeIcon
               icon={faUtensils}
-              className="inline transform hover:scale-110"
+              className="inline transform md:hover:scale-110"
             />
-            <p className="hidden ml-8 sm:inline transform hover:scale-110">
+            <p className="hidden ml-8 sm:inline transform md:hover:scale-110">
               it just forks!
             </p>
           </h1>
@@ -26,13 +26,13 @@ const Header = () => {
       <nav className="flex ">
         <Link
           to="/"
-          className="flex align-middle text-white Merriweather-400 px-4 py-2 hover:underline transform hover:scale-110"
+          className="flex align-middle text-white Merriweather-400 px-4 py-2 hover:underline transform md:hover:scale-110"
         >
           <button>Search recipes</button>
         </Link>
         <Link
           to="/favorites"
-          className="flex align-middle text-white Merriweather-400 px-4 py-2 hover:underline transform hover:scale-110"
+          className="flex align-middle text-white Merriweather-400 px-4 py-2 hover:underline transform md:hover:scale-110"
         >
           <button>Favorites</button>
         </Link>

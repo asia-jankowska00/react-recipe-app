@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { CredentialsContext } from "../contexts/CredentialsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,7 +58,7 @@ const OpenRecipe = ({ match }) => {
   const history = useHistory();
 
   return (
-    <div className="text-gray-500 flex flex-col items-center justify-center relative ">
+    <div className="text-gray-500 flex flex-col items-center justify-center relative">
       <div
         onClick={history.goBack}
         className="cursor-pointer flex items-center text-orange-600 p-4"
@@ -71,7 +70,7 @@ const OpenRecipe = ({ match }) => {
         Back
       </div>
 
-      <div className="flex flex-col bg-white shadow p-8 w-1/2 mx-6 mb-6">
+      <div className="flex flex-col bg-white shadow p-8 w-11/12 sm:w-5/6 md:w-3/4 lg:w-1/2 mx-6 mb-6">
         <img
           src={openRecipe.image}
           alt="recipe"
@@ -79,7 +78,7 @@ const OpenRecipe = ({ match }) => {
         />
 
         <div className="flex justify-between py-8 items-center">
-          <h2 className="text-orange-600 w-2/3 text-3xl font-bold">
+          <h2 className="text-orange-600 w-2/3 text-2xl md:text-3xl font-bold">
             {openRecipe.label}
           </h2>
 
@@ -94,7 +93,7 @@ const OpenRecipe = ({ match }) => {
                 icon={favorites.includes(match.params.id) ? fasHeart : farHeart}
                 className="mt-1 mr-4 text-2xl inline-block self-center"
               />
-              <p className="inline text-left self-center">
+              <p className="inline text-center md:text-left self-center">
                 {favorites.includes(match.params.id)
                   ? "Remove favorite"
                   : "Add favorite"}
@@ -106,7 +105,7 @@ const OpenRecipe = ({ match }) => {
         <hr></hr>
 
         <div className="py-4">
-          <p className="text-gray-700 py-2 text-xl">
+          <p className="text-gray-700 py-2 text-lg md:text-xl">
             Source:{" "}
             <a href={openRecipe.url} className="underline">
               {openRecipe.source} <FontAwesomeIcon icon={faExternalLinkAlt} />
@@ -128,7 +127,9 @@ const OpenRecipe = ({ match }) => {
         <hr></hr>
 
         <div className="py-4">
-          <h3 className="py-2 text-gray-700 text-xl">Ingredients:</h3>
+          <h3 className="py-2 text-gray-700 text-lg md:text-xl">
+            Ingredients:
+          </h3>
           <ul className="py-2 text-gray-600">
             {parsedIngredientLines.map((ingredient) => (
               <li key={ingredient} className="mx-4 py-2 list-disc">
@@ -140,7 +141,7 @@ const OpenRecipe = ({ match }) => {
 
         <hr></hr>
 
-        <h1 className="py-2">Recipe ID: {match.params.id}</h1>
+        <h1 className="py-2 break-words">Recipe ID: {match.params.id}</h1>
       </div>
     </div>
   );

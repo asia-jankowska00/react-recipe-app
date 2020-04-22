@@ -17,7 +17,7 @@ const Form = () => {
         <Dropdown />
         <button
           onClick={doSearch}
-          className="w-full md:w-3/12 bg-blue-900 text-white Merriweather-400 shadow px-4 py-2 transform hover:scale-110"
+          className="w-full md:w-3/12 bg-blue-900 text-white Merriweather-400 shadow px-4 py-2 transform md:hover:scale-110"
         >
           Search
         </button>
