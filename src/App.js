@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/Header";
@@ -30,14 +30,14 @@ function App() {
     // <CredentialsContextProvider>
     // <SearchQueryContextProvider>
     // {/* <FavoritesContextProvider> */}
-    <Router>
-      <div className="mb-8">
-        <Header />
-        <Route path="/recipe/:id" component={OpenRecipe} />
-        <Route path="/" exact component={Search} />
-        <Route path="/favorites" component={Favorites} />
-      </div>
-    </Router>
+
+    <div className="mb-8">
+      <Header />
+      <Route path="/recipe/:id" component={OpenRecipe} />
+      <Route path="/react-recipe-app/" exact component={Search} />
+      <Route path="/favorites" component={Favorites} />
+    </div>
+
     // {/* </FavoritesContextProvider> */}
     // </SearchQueryContextProvider>
     // </CredentialsContextProvider>
