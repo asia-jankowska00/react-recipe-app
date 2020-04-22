@@ -5,7 +5,7 @@ import { FavoritesContext } from "../contexts/FavoritesContext";
 
 const Recipes = () => {
   const { recipes } = useContext(SearchQueryContext);
-  const { setFavorites } = useContext(FavoritesContext);
+  // const { setFavorites } = useContext(FavoritesContext);
 
   return (
     <div className="flex flex-wrap justify-center">
