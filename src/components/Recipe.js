@@ -11,13 +11,7 @@ const Recipe = (props) => {
   const recipe = props.recipe.recipe || props.recipe;
   const parsedUri = recipe.uri.split("_")[1];
 
-  const {
-    favorites,
-    // setFavorites,
-    updateFavorites,
-    // addFavorite,
-    // deleteFavorite,
-  } = useContext(FavoritesContext);
+  const { favorites, updateFavorites } = useContext(FavoritesContext);
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
