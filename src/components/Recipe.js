@@ -12,7 +12,7 @@ const Recipe = (props) => {
   const parsedUri = recipe.uri.split("_")[1];
 
   const { favorites, updateFavorites } = useContext(FavoritesContext);
-  // test comment
+  // test comment 2
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
