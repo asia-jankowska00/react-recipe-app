@@ -1,11 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Recipe from "./Recipe";
 import { SearchQueryContext } from "../contexts/SearchQueryContext";
-import { FavoritesContext } from "../contexts/FavoritesContext";
 
 const Recipes = () => {
   const { recipes } = useContext(SearchQueryContext);
-  // const { setFavorites } = useContext(FavoritesContext);
 
   return (
     <div className="flex flex-wrap justify-center">
